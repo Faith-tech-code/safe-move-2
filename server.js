@@ -23,6 +23,12 @@ fastify.register(require('@fastify/static'), {
   prefix: '/uploads/',
 });
 
+fastify.register(require('@fastify/static'), {
+  root: require('path').join(__dirname, 'frontend'),
+  prefix: '/',
+  decorateReply: false
+});
+
 fastify.get('/', async (request, reply) => {
   return { message: 'SafeMove API is running', version: '1.0.0' };
 });
@@ -40,3 +46,4 @@ const start = async () => {
   }
 };
 start();
+
